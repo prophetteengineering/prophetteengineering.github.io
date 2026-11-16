@@ -1672,11 +1672,33 @@ footer { border-top: 1px solid var(--line); }
     try { d.g.gain.exponentialRampToValueAtTime(0.0001, AC.currentTime + 0.4); } catch (e) {}
     setTimeout(function () { d.os.forEach(function (o) { try { o.stop(); } catch (e) {} }); }, 500);
   }
+  /* iPhone: Web Audio is muted by the ringer switch unless the page plays as media, and it must be started inside the tap */
+  var keepAlive = null;
+  function silentWav() {
+    var n = 4410, b = new ArrayBuffer(44 + n * 2), v = new DataView(b), i = 0;
+    function w(str) { for (var k = 0; k < str.length; k++) v.setUint8(i++, str.charCodeAt(k)); }
+    w('RIFF'); v.setUint32(i, 36 + n * 2, true); i += 4; w('WAVEfmt '); v.setUint32(i, 16, true); i += 4; v.setUint16(i, 1, true); i += 2; v.setUint16(i, 1, true); i += 2;
+    v.setUint32(i, 44100, true); i += 4; v.setUint32(i, 88200, true); i += 4; v.setUint16(i, 2, true); i += 2; v.setUint16(i, 16, true); i += 2; w('data'); v.setUint32(i, n * 2, true);
+    return URL.createObjectURL(new Blob([b], { type: 'audio/wav' }));
+  }
+  function unlock() {
+    try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+    try {
+      if (!keepAlive) { keepAlive = document.createElement('audio'); keepAlive.src = silentWav(); keepAlive.loop = true; keepAlive.setAttribute('playsinline', ''); keepAlive.setAttribute('x-webkit-airplay', 'deny'); }
+      var pr = keepAlive.play(); if (pr && pr.catch) pr.catch(function () {});
+    } catch (e) {}
+    if (!AC) return;
+    try { AC.resume(); } catch (e) {}
+    try { var b = AC.createBuffer(1, 1, AC.sampleRate), src = AC.createBufferSource(); src.buffer = b; src.connect(AC.destination); src.start(0); } catch (e) {}
+  }
+  ['touchend', 'pointerdown', 'click'].forEach(function (ev) {
+    document.addEventListener(ev, function () { if (sndOn && AC && AC.state !== 'running') unlock(); }, { passive: true, capture: true });
+  });
   function setSound(on) {                       /* only ever called from a click */
     if (on && !audio()) on = false;
     sndOn = on;
-    if (on) { try { AC.resume(); } catch (e) {} if (home.classList.contains('active')) droneOn(); tone(440, 0.18, 'triangle', 0.12); tone(660, 0.28, 'triangle', 0.12, null, 0.15); }
-    else droneOff();
+    if (on) { unlock(); if (home.classList.contains('active')) droneOn(); tone(440, 0.18, 'triangle', 0.12); tone(660, 0.28, 'triangle', 0.12, null, 0.15); }
+    else { droneOff(); try { if (keepAlive) keepAlive.pause(); } catch (e) {} }
     if (sndBtn) { sndBtn.textContent = on ? 'Sound on' : 'Sound off'; sndBtn.setAttribute('aria-pressed', on ? 'true' : 'false'); }
   }
   if (sndBtn) sndBtn.addEventListener('click', function () { setSound(!sndOn); });
