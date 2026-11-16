@@ -429,6 +429,7 @@ footer { border-top: 1px solid var(--line); }
 .fig.tall { max-width: 26rem; }
 .fig.tall .frame { padding: 0; }
 .boot-go .boot-skip { border-style: dashed; }
+.pdf-dl { margin-top: 1.2rem; }
 @media (max-width: 600px) { .figrow.photos { grid-template-columns: 1fr; } .ix { padding: 1rem 0.9rem; } .ix-read dd { font-size: 1.4rem; } }
 </style>
 </head>
@@ -1413,7 +1414,8 @@ footer { border-top: 1px solid var(--line); }
   <div class="p-head"><div class="wrap">
     <p class="kicker">Resume</p>
     <h1>Resume</h1>
-    <p class="sum">One page, current as of November 2026. For a PDF copy, email <a href="mailto:prophette.engineering@gmail.com">prophette.engineering@gmail.com</a>.</p>
+    <p class="sum">One page, current as of November 2026.<span class="pdf-alt"> For a PDF copy, email <a href="mailto:prophette.engineering@gmail.com">prophette.engineering@gmail.com</a>.</span></p>
+    <div class="btns pdf-dl" hidden><a class="btn" href="files/Demetrius_Prophette_Resume.pdf" download="Demetrius_Prophette_Resume.pdf">Download PDF</a><a class="btn alt" href="files/Demetrius_Prophette_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a></div>
   </div></div>
   <div class="sec"><div class="wrap">
     <img class="resume-img" src="img/resume-1.png" alt="One-page resume of Demetrius Prophette. The same content is covered on the About and project pages." width="1275" height="1650">
@@ -2136,6 +2138,13 @@ footer { border-top: 1px solid var(--line); }
     rng.addEventListener('input', function () { if (playing) stop(); pos = +rng.value; draw(); btn.textContent = pos >= n ? 'Replay' : 'Play'; });
     window.addEventListener('hashchange', function () { if (playing) stop(); });
     pos = iApo; draw(); btn.textContent = 'Play'; pos = RM ? iApo : 0; if (!RM) draw();
+  })();
+
+  /* ---------- resume PDF: only where the site is self-hosted ---------- */
+  (function () {
+    if (!/github\.io$/.test(location.hostname)) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.pdf-dl'), function (el) { el.hidden = false; });
+    Array.prototype.forEach.call(document.querySelectorAll('.pdf-alt'), function (el) { el.hidden = true; });
   })();
 
   /* ---------- skip to projects from the boot screen ---------- */
