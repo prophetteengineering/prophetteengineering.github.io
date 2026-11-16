@@ -431,6 +431,23 @@ footer { border-top: 1px solid var(--line); }
 .boot-go .boot-skip { border-style: dashed; }
 .pdf-dl { margin-top: 1.2rem; }
 @media (max-width: 600px) { .figrow.photos { grid-template-columns: 1fr; } .ix { padding: 1rem 0.9rem; } .ix-read dd { font-size: 1.4rem; } }
+
+.featured { padding: 2.4rem 0 2.6rem; border-top: 1px solid var(--line); }
+.featured .kicker { margin: 0 0 1rem; }
+.feat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.fcard { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--line); }
+.fcard:hover, .fcard:focus-visible { border-color: var(--flame); }
+.fcard img { display: block; width: 100%; aspect-ratio: 16 / 8; object-fit: cover; background: #0c111b; }
+.fcard > div { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+.fcard h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.35rem; line-height: 1.1; margin: 0; text-transform: uppercase; letter-spacing: 0.01em; color: var(--ink); }
+.fcard:hover h3 { color: var(--flame); }
+.fcard p { margin: 0; font-size: 0.95rem; line-height: 1.45; color: var(--soft); flex: 1; }
+.fgo { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--flame); margin-top: 0.3rem; }
+.feat-all { display: inline-block; margin-top: 1.1rem; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.did { margin: 0.9rem 0 0; max-width: 46rem; border-left: 2px solid var(--flame); padding: 0.15rem 0 0.15rem 0.9rem; font-size: 1.02rem; line-height: 1.5; color: var(--ink); }
+.did span { display: block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--flame); margin-bottom: 0.15rem; }
+@media (max-width: 860px) { .feat-grid { grid-template-columns: 1fr; } .fcard { flex-direction: row; } .fcard img { width: 38%; aspect-ratio: auto; min-height: 100%; } }
+@media (max-width: 480px) { .fcard img { width: 34%; } .fcard h3 { font-size: 1.15rem; } .fcard p { font-size: 0.9rem; } }
 </style>
 </head>
 <body>
@@ -484,6 +501,27 @@ footer { border-top: 1px solid var(--line); }
       <p id="dil-t">1 hour in this orbit is 1.41 hours far away.</p>
       <small>Circular orbit around a non-spinning black hole. Drag to fly closer.</small>
     </aside>
+  </section>
+
+  <section class="featured" aria-labelledby="feat-h">
+    <div class="wrap">
+      <p class="kicker" id="feat-h">Featured work</p>
+      <div class="feat-grid">
+        <a class="fcard" href="#nozzle-study">
+          <img src="img/isp-vs-length.jpg" alt="" width="1200" height="675" loading="lazy">
+          <div><h3>Bell nozzle trade study</h3><p>Five bell lengths in RPA and CFD. The team adopted my 80% bell.</p><span class="fgo">Read the study</span></div>
+        </a>
+        <a class="fcard" href="#manifold">
+          <img src="img/mf-hotspot.jpg" alt="" width="1491" height="566" loading="lazy">
+          <div><h3>COPV pressurant manifold</h3><p>CAD, drawing, hand calculations and FEA. Cleared for the machine shop.</p><span class="fgo">See the analysis</span></div>
+        </a>
+        <a class="fcard" href="#heat-flux">
+          <img src="img/hf-temp.jpg" alt="" width="1196" height="437" loading="lazy" style="object-position: 38% 50%">
+          <div><h3>Nozzle heat flux</h3><p>A Python thermal model, checked against Ansys, that sized the film cooling.</p><span class="fgo">See the model</span></div>
+        </a>
+      </div>
+      <a class="feat-all" href="#archive">All six projects</a>
+    </div>
   </section>
 
   <div class="ticker" aria-hidden="true">
@@ -647,6 +685,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Beach Launch Team, Combustion Devices</p>
     <h1>Bell nozzle length trade study</h1>
     <p class="sum">The team's next engine is moving from a conical nozzle to a bell. I compared five bell lengths in RPA and CFD to find where the trade between performance and length lands, and the team adopted the result.</p>
+    <p class="did"><span>What I did</span>Ran five bell-length cases in RPA and Fluent CFD, compared performance against length, and recommended the 80% bell the team adopted.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Lead analyst, independent study</dd></div>
       <div><dt>Timeline</dt><dd>September 2026</dd></div>
@@ -776,6 +815,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Beach Launch Team, Combustion Devices</p>
     <h1>Nozzle heat flux and wall thermal analysis</h1>
     <p class="sum">Can an uncooled heat-sink chamber survive a ten-second burn? I wrote a Python thermal model to find out, checked it against a 2D Ansys model, and then worked out how much film cooling the wall needs.</p>
+    <p class="did"><span>What I did</span>Wrote the Python thermal model, checked it against a 2D Ansys model, and worked out the film cooling the wall needs.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Analyst. I wrote the physics modules and ran the Ansys model.</dd></div>
       <div><dt>Timeline</dt><dd>October 2026 to present</dd></div>
@@ -873,6 +913,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Beach Launch Team, Fluids. Theseus 2</p>
     <h1>COPV pressurant manifold</h1>
     <p class="sum">A custom manifold that mounts directly on the rocket's high-pressure nitrogen tank and feeds every downstream line. I took it from interface definition through CAD, drawing, hand calculations and FEA, and it is now cleared for the machine shop.</p>
+    <p class="did"><span>What I did</span>Defined the interfaces, built the CAD and drawing, ran the hand calculations and FEA, and got it cleared for machining.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Design lead</dd></div>
       <div><dt>Timeline</dt><dd>October 2026 to present</dd></div>
@@ -1059,6 +1100,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Beach Launch Team, Fluids. Theseus 2</p>
     <h1>Fluid system analysis and CAD</h1>
     <p class="sum">The rocket's fluid system is being rebuilt for a new airframe. I calculated the loss coefficient of every fitting on the vehicle, and I'm co-leading the upper fluids CAD with the fluids lead.</p>
+    <p class="did"><span>What I did</span>Calculated the loss coefficient of every fitting on the vehicle and co-lead the upper fluids CAD.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Fluid systems designer</dd></div>
       <div><dt>Timeline</dt><dd>September 2026 to present</dd></div>
@@ -1145,6 +1187,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Beach Launch Team, Propulsion and Fluids</p>
     <h1>Valve testing and test operations</h1>
     <p class="sum">My first work on the team was hands-on: qualifying the valves that fly on the rocket, and running the control GUI during checkouts. It is also where I caught a timing problem with the igniters before a static fire.</p>
+    <p class="did"><span>What I did</span>Qualified flight valves on the bench, ran the control GUI during checkouts, and flagged an igniter timing problem.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Test engineer</dd></div>
       <div><dt>Timeline</dt><dd>2023</dd></div>
@@ -1198,6 +1241,7 @@ footer { border-top: 1px solid var(--line); }
     <p class="kicker">Personal project</p>
     <h1>Rocket flight simulator</h1>
     <p class="sum">A one-dimensional rocket flight simulator I wrote in Python over the summer to build up my simulation skills outside of class. It is the first of a planned series, and the code and report are public.</p>
+    <p class="did"><span>What I did</span>Wrote the simulator in Python on my own and published the code and report.</p>
     <dl class="facts">
       <div><dt>Role</dt><dd>Sole author</dd></div>
       <div><dt>Timeline</dt><dd>Summer 2026</dd></div>
@@ -1743,15 +1787,16 @@ footer { border-top: 1px solid var(--line); }
   var W = 0, H = 0, stars = [], parts = [], zoom = 1, zoomT = 1, heroOn = true, last = 0;
   var yaw = 0.6, pitch = 0.27, yawV = 0, dragging = false, px = 0, py = 0;
   var shipU = 2.4, plunge = -1;                               /* plunge: -1 idle, 0..1 diving */
+  var PHONE = (window.innerWidth < 700 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 1000)), fLast = 0;
   function rnd() { return Math.random(); }
   function resize() {
-    var r = cv.getBoundingClientRect(), d = Math.min(2, window.devicePixelRatio || 1);
+    var r = cv.getBoundingClientRect(), d = Math.min(PHONE ? 1.5 : 2, window.devicePixelRatio || 1);
     W = r.width; H = r.height; cv.width = Math.round(W * d); cv.height = Math.round(H * d); cx.setTransform(d, 0, 0, d, 0, 0);
   }
   function seed() {
     stars = []; parts = [];
-    for (var i = 0; i < 520; i++) { var u = rnd() * 2 - 1, th = rnd() * 6.283, q = Math.sqrt(1 - u * u); stars.push({ x: q * Math.cos(th), y: u, z: q * Math.sin(th), s: rnd() * 1.3 + 0.3, p: rnd() * 6.283 }); }
-    for (var j = 0; j < 3000; j++) parts.push({ r: 1.75 + Math.pow(rnd(), 1.7) * 3.4, a: rnd() * 6.283, y: (rnd() - 0.5) * 0.16, s: rnd() });
+    for (var i = 0; i < (PHONE ? 260 : 520); i++) { var u = rnd() * 2 - 1, th = rnd() * 6.283, q = Math.sqrt(1 - u * u); stars.push({ x: q * Math.cos(th), y: u, z: q * Math.sin(th), s: rnd() * 1.3 + 0.3, p: rnd() * 6.283 }); }
+    for (var j = 0; j < (PHONE ? 1200 : 3000); j++) parts.push({ r: 1.75 + Math.pow(rnd(), 1.7) * 3.4, a: rnd() * 6.283, y: (rnd() - 0.5) * 0.16, s: rnd() });
   }
   /* world point -> screen. Returns [sx, sy, depth, scale]; depth > 0 is in front of the hole. */
   function proj(X, Y, Z, bx, by, R) {
@@ -1829,8 +1874,10 @@ footer { border-top: 1px solid var(--line); }
     setTimeout(function () { if (dil) setDil(); shipU += 2; }, 700);
   }
   function loop(now) {
-    if (heroOn && home.classList.contains('active') && !document.hidden) draw(now);
     requestAnimationFrame(loop);
+    if (PHONE && plunge < 0 && !dragging && now - fLast < 32) return;   /* about 30 fps on phones */
+    fLast = now;
+    if (heroOn && home.classList.contains('active') && !document.hidden) draw(now);
   }
   if (cx) {
     resize(); seed();
@@ -1978,11 +2025,12 @@ footer { border-top: 1px solid var(--line); }
     try { sessionStorage.setItem('boot', '1'); } catch (e) {}
     var lines = ['PROPHETTE FLIGHT COMPUTER   BUILD 2026.11', '', '> power-on self test .............. OK', '> loading mission archive ......... 6 missions', '> propulsion ...................... LOX / RP-1, 2,000 lbf, 355 psia', '> pressurant ...................... GN2, COPV at 4,000 psi', '> position ........................ Long Beach, California', '> crew status ..................... available, Summer 2027', '', 'READY.'];
     if (window.innerWidth < 640) lines = lines.map(function (l) { return l.replace(/ \.{3,} /, ': ').replace('   BUILD', ' / BUILD'); });
-    var pre = boot.querySelector('pre'), go = boot.querySelector('.boot-go'), li = 0; boot.classList.add('on');
+    var pre = boot.querySelector('pre'), go = boot.querySelector('.boot-go'), li = 0, PHB = (window.innerWidth < 700 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 1000)); boot.classList.add('on');
+    if (PHB) lines = lines.filter(function (l, k) { return k === 0 || k === 1 || /loading|propulsion|crew/.test(l) || l === 'READY.'; });
     bootIv = setInterval(function () {
       if (li < lines.length) { pre.textContent += lines[li++] + '\n'; }
-      else { clearInterval(bootIv); go.hidden = false; bootTo = setTimeout(function () { endBoot(false); }, 6000); }
-    }, 150);
+      else { clearInterval(bootIv); go.hidden = false; bootTo = setTimeout(function () { endBoot(false); }, PHB ? 2500 : 6000); }
+    }, PHB ? 45 : 150);
     $('boot-snd').addEventListener('click', function (e) { e.stopPropagation(); endBoot(true); });
     $('boot-mute').addEventListener('click', function (e) { e.stopPropagation(); endBoot(false); });
     boot.addEventListener('click', function () { endBoot(false); });
