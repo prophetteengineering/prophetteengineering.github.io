@@ -1047,8 +1047,8 @@ footer { border-top: 1px solid var(--line); }
       <div data-chart="fos"></div>
       <figcaption class="cap">Safety factor on yield in 6061-T6. The dashed line is the 1.5 the fluids lead asked for.</figcaption>
     </figure>
-    <p><strong>At 4,000 psi the manifold does not yield.</strong> The port walls clear the 1.5 requirement with a wide margin: 3.08 by hand and 3.25 in the model. The local peak where the drilled holes cross is a different story. The stress concentration there is about 2.4, which gives a safety factor of 1.38, roughly 8% short of 1.5. Whether the requirement applies to that local peak or to the general wall stress has not been settled with the fluids lead, so the report gives both.</p>
-    <p><strong>At the 6,000 psi proof, a small amount of local yielding is predicted</strong> at the same intersections, starting at about 5,500 psi. The number is an upper bound: the model leaves the crossing edges sharp, real 6061-T6 stock is usually stronger than the minimum, and a linear model overstates stress once the material yields.</p>
+    <p><strong>At 4,000 psi the manifold does not yield.</strong> The port walls clear the 1.5 requirement with a wide margin: 3.08 by hand and 3.25 in the model. The local peak where the drilled holes cross is a different story. The stress concentration there is about 2.4, which gives a safety factor of 1.38, roughly 8% short of 1.5. That number comes from a model with perfectly sharp edges where the holes cross. To deal with it, I called out an R.010 to .015 in edge break at all four intersections on the drawing, then reviewed the result and the callout with the fluids lead, who signed off on the design.</p>
+    <p><strong>At the 6,000 psi proof, a small amount of local yielding is predicted</strong> at the same intersections, starting at about 5,500 psi. The number is an upper bound: the model leaves the crossing edges sharp where the drawing now breaks them, real 6061-T6 stock is usually stronger than the minimum, and a linear model overstates stress once the material yields.</p>
 
     <div class="ix" id="mp">
       <p class="ix-k">Interactive: stress against pressure</p>
@@ -1071,9 +1071,9 @@ footer { border-top: 1px solid var(--line); }
 
     <h2>Where it stands</h2>
     <ul>
-      <li>Confirming with the fluids lead how the 1.5 factor applies, and whether local yielding at proof is acceptable.</li>
-      <li>Modeling the 0.015 in deburr radius the drawing calls for at the port intersections, to see how much it lowers the peak. The finer mesh runs into the student license node limit, so this case is still in progress.</li>
-      <li>If more margin is needed, the options are 7075-T6 (a safety factor near 2.9 at the same peak) or a lower proof pressure. A lower proof would also suit the COPV fitting, which is rated to 5,000 psi.</li>
+      <li>Resolved: the fluids lead signed off on the 1.38 local peak with the R.010 to .015 in edge break called out at all four port intersections.</li>
+      <li>Still open: modeling the edge break in FEA to measure how much it lowers the peak. The finer mesh runs into the student license node limit.</li>
+      <li>Fallbacks if the proof test shows a problem: 7075-T6 (a safety factor near 2.9 at the same peak) or a lower proof pressure. A lower proof would also suit the COPV fitting, which is rated to 5,000 psi.</li>
       <li>Still to do on the analysis: a hand check of thread shear and a nonlinear case at proof pressure.</li>
       <li>The machine shop request is approved. The plan is a 6061 practice part, then the flight part, on a manual mill, followed by a hydrostatic proof test with dimensional checks before and after.</li>
     </ul>
@@ -1210,7 +1210,7 @@ footer { border-top: 1px solid var(--line); }
 
     <h2>The igniter timing finding</h2>
     <p>In lab testing ahead of a static fire I found that the igniters fired before the control GUI indicated, which pointed to unreliable timing code. I reported it before the test and raised it again during the test. Early ignition was one of several issues that damaged the test stand.</p>
-    <p>I proposed an overhaul of the ground-support GUI to catch that class of problem earlier. The team has since redesigned the GUI and the stand, and went on to a successful launch.</p>
+    <p>I proposed an overhaul of the ground-support GUI to catch that class of problem earlier. The avionics lead then rebuilt the control GUI, and the team went on to a successful launch.</p>
     <figure class="vid">
       <video controls preload="none" playsinline poster="img/static-fire-poster.jpg"><source src="media/static-fire-2023.mp4" type="video/mp4"></video>
       <figcaption class="cap">My first static fire, 2023. The igniters fired early and the test ended in a fire at the stand. Video, 25 seconds, with sound.</figcaption>
@@ -2144,7 +2144,7 @@ footer { border-top: 1px solid var(--line); }
       bar('mp-b1', pk); bar('mp-b2', wl);
       $('mp-t1').textContent = fmt(Math.round(pk)) + ' psi'; $('mp-t2').textContent = fmt(Math.round(wl)) + ' psi';
       $('mp-pk').textContent = p ? (YLD / pk).toFixed(2) : 'n/a'; $('mp-wl').textContent = p ? (YLD / wl).toFixed(2) : 'n/a';
-      $('mp-state').textContent = pk >= YLD ? 'Local yielding predicted at the port intersections' : pk >= YLD / 1.5 ? 'No yield. Local peak is under the 1.5 factor' : 'No yield. Everything clears 1.5';
+      $('mp-state').textContent = pk >= YLD ? 'Local yielding predicted at the port intersections' : pk >= YLD / 1.5 ? 'No yield. The sharp-edge peak is under 1.5; the edge break on the drawing was signed off' : 'No yield. Everything clears 1.5';
       $('mp-case').textContent = p === 4000 ? 'MEOP' : p === 6000 ? 'Proof' : p < 4000 ? 'Below MEOP' : 'Between MEOP and proof';
     }
     rng.addEventListener('input', draw);
