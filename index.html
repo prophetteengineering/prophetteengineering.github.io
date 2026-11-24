@@ -448,6 +448,17 @@ footer { border-top: 1px solid var(--line); }
 .did span { display: block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--flame); margin-bottom: 0.15rem; }
 @media (max-width: 860px) { .feat-grid { grid-template-columns: 1fr; } .fcard { flex-direction: row; } .fcard img { width: 38%; aspect-ratio: auto; min-height: 100%; } }
 @media (max-width: 480px) { .fcard img { width: 34%; } .fcard h3 { font-size: 1.15rem; } .fcard p { font-size: 0.9rem; } }
+
+.sf-lead { max-width: 58rem; margin: 1.6rem 0; }
+.sf-lead .frame { padding: 0; }
+.sf-lead img { display: block; width: 100%; height: auto; }
+.sf-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; max-width: 40rem; margin: 1rem 0 1.6rem; }
+.sf-pair .frame { padding: 0; background: #0c111b; }
+.sf-pair img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.sf-hero { max-width: 22rem; margin: 2rem 0 1rem; }
+.sf-hero .frame { padding: 0; }
+.sf-hero img { display: block; width: 100%; height: auto; }
+.note-later { border-left: 2px solid var(--line); padding-left: 0.9rem; color: var(--soft); font-style: italic; margin: 1.4rem 0; }
 </style>
 </head>
 <body>
@@ -515,12 +526,12 @@ footer { border-top: 1px solid var(--line); }
           <img src="img/mf-hotspot.jpg" alt="" width="1491" height="566" loading="lazy">
           <div><h3>COPV pressurant manifold</h3><p>CAD, drawing, hand calculations and FEA. Cleared for the machine shop.</p><span class="fgo">See the analysis</span></div>
         </a>
-        <a class="fcard" href="#heat-flux">
-          <img src="img/hf-temp.jpg" alt="" width="1196" height="437" loading="lazy" style="object-position: 38% 50%">
-          <div><h3>Nozzle heat flux</h3><p>A Python thermal model, checked against Ansys, that sized the film cooling.</p><span class="fgo">See the model</span></div>
+        <a class="fcard" href="#stratos-static-fire">
+          <img src="img/sf-engine-front.jpg" alt="" width="1400" height="1050" loading="lazy" style="object-position: 50% 40%">
+          <div><h3>Stratos static fire</h3><p>Test crew at FAR: ran the cold flow controls, coordinated LOX loading and restored the data link.</p><span class="fgo">See the campaign</span></div>
         </a>
       </div>
-      <a class="feat-all" href="#archive">All six projects</a>
+      <a class="feat-all" href="#archive">All seven projects</a>
     </div>
   </section>
 
@@ -547,6 +558,7 @@ footer { border-top: 1px solid var(--line); }
             <a class="node" href="#fluid-system" data-i="3"><i></i><span>04 Fluid system</span></a>
             <a class="node" href="#test-operations" data-i="4"><i></i><span>05 Test operations</span></a>
             <a class="node" href="#flight-simulator" data-i="5"><i></i><span>06 Flight simulator</span></a>
+            <a class="node" href="#stratos-static-fire" data-i="6"><i></i><span>07 Stratos static fire</span></a>
           </div>
           <p class="map-hint">Hover to hold an orbit. Select to fly there.</p>
         </div>
@@ -637,6 +649,14 @@ footer { border-top: 1px solid var(--line); }
             <h3>Valve testing and test operations</h3>
             <p>Decay and hydrostatic testing of flight valves, and an igniter timing problem I caught before a static fire.</p>
             <div class="meta"><span>Hydro and decay test</span><span class="st done">Complete</span></div>
+          </div>
+        </a>
+        <a class="card" href="#stratos-static-fire">
+          <div class="thumb"><img src="img/sf-engine-front.jpg" alt="" width="1400" height="1050" style="object-fit:cover"></div>
+          <div class="txt">
+            <h3>Stratos static fire campaign</h3>
+            <p>Test crew for the first static fire of an in-house liquid engine at FAR: assembly, instrumentation, cold flow controls and LOX loading.</p>
+            <div class="meta"><span>Cold flow, LOX hot fire</span><span class="st done">Nov 2026</span></div>
           </div>
         </a>
         <a class="card" href="#flight-simulator">
@@ -1230,7 +1250,90 @@ footer { border-top: 1px solid var(--line); }
     </div>
 
 
-    <div class="pager"><a href="#fluid-system"><small>Previous</small>&larr; Fluid system analysis and CAD</a><a href="#flight-simulator"><small>Next project</small>Rocket flight simulator &rarr;</a></div>
+    <div class="pager"><a href="#fluid-system"><small>Previous</small>&larr; Fluid system analysis and CAD</a><a href="#stratos-static-fire"><small>Next project</small>Stratos static fire campaign &rarr;</a></div>
+  </div></div>
+</article>
+
+<!-- ===================== 07 STRATOS STATIC FIRE ===================== -->
+<article class="view" data-view="stratos-static-fire">
+  <div class="p-head"><div class="wrap">
+    <a class="back" href="#projects">&larr; All projects</a>
+    <p class="kicker">Stratos liquid rocket, CSULB. Friends of Amateur Rocketry, Mojave</p>
+    <h1>Stratos static fire campaign</h1>
+    <p class="sum">I was on the test crew for the first static fire of the Stratos engine, a liquid rocket engine the team machined in-house from a block of copper-chromium. The campaign was a cold flow followed by a LOX hot fire at FAR in the Mojave Desert, and I worked every phase on site, from putting the vehicle on the stand to running the control room.</p>
+    <p class="did"><span>What I did</span>Ran the control room switch box and GUI for the cold flow, coordinated LOX loading with the pad crew, restored the vehicle's data link, installed thermocouples, and assembled and fabricated engine hardware.</p>
+    <dl class="facts">
+      <div><dt>Role</dt><dd>Propulsion test crew</dd></div>
+      <div><dt>Date</dt><dd>November 2026</dd></div>
+      <div><dt>Site</dt><dd>Friends of Amateur Rocketry (FAR), Mojave, CA</dd></div>
+      <div><dt>Engine</dt><dd>LOX liquid engine, CuCr chamber, designed and built by the Stratos senior design team</dd></div>
+    </dl>
+  </div></div>
+  <div class="p-body"><div class="wrap">
+    <figure class="fig sf-lead">
+      <div class="frame dark"><button class="zoom" type="button"><img src="img/sf-engine-front.jpg" alt="The copper-chromium engine and its mounting plate on the vertical test stand at FAR, with nitrogen bottles and the LOX dewar beside the pad" width="1400" height="1050"></button></div>
+      <figcaption class="cap">The engine on the stand at FAR before the test.</figcaption>
+    </figure>
+
+    <h2>Integration and assembly</h2>
+    <ul>
+      <li>Moved the vehicle onto the test stand and bolted it to the I-beam structure.</li>
+      <li>Assembled the injector plate, manifold and load cell. Applied Krytox, inspected each O-ring for cuts and flaws from sharp edges, and seated them in the injector plate and manifold.</li>
+      <li>Torqued the fasteners joining the injector plate to the manifold plate and load cell, and checked every fitting and bolt on the vehicle by sight and by hand before the test.</li>
+    </ul>
+    <div class="figrow photos">
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-integration.jpg" alt="The engine, load cell and insulated propellant lines on the horizontal integration stand at night" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">Engine, load cell and propellant lines during night integration.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-crew-night.jpg" alt="Crew members in hard hats working on the engine end of the vehicle at night, with nitrogen bottles and the LOX dewar nearby" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">The crew working on the engine end of the vehicle.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-vehicle-stand.jpg" alt="The insulated vehicle strapped to the steel I-beam stand before being raised" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">The vehicle on the I-beam stand before it was raised.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-lab.jpg" alt="The Stratos vehicle on a lab bench with its COPV, avionics plate and insulated tank section" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">The Stratos vehicle in the CSULB lab during integration.</figcaption></figure>
+    </div>
+    <div class="sf-pair">
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-torque.jpg" alt="Torquing a bolt on the engine's aluminum mounting plate next to the copper-chromium chamber" width="1050" height="1400" loading="lazy"></button></div><figcaption class="cap">Torquing fasteners on the engine's mounting plate.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-vertical.jpg" alt="The full vehicle raised vertically on the stand with a ladder alongside, against a cloudy sky at sunset" width="1193" height="1400" loading="lazy"></button></div><figcaption class="cap">The vehicle raised on the stand.</figcaption></figure>
+    </div>
+
+    <h2>Fabrication</h2>
+    <ul>
+      <li>Made custom washers from sheet metal for the engine assembly.</li>
+      <li>Bent the tube lines that connect the manifold to the vehicle's fill line.</li>
+    </ul>
+
+    <h2>Instrumentation and data</h2>
+    <ul>
+      <li>Installed thermocouples on the engine.</li>
+      <li>When the data link between the vehicle's LabJack T7 and the control room went down, I traced the problem to the Ethernet connection, connected my laptop, installed MATLAB and Kipling, and got data acquisition running again.</li>
+    </ul>
+    <figure class="fig sf-lead">
+      <div class="frame dark"><button class="zoom" type="button"><img src="img/sf-thermocouple.jpg" alt="Thermocouple wire routed to the engine nozzle, with the mounting plate and a feed line in view" width="1400" height="1050" loading="lazy"></button></div>
+      <figcaption class="cap">Thermocouple wire routed to the engine.</figcaption>
+    </figure>
+
+    <h2>Test operations</h2>
+    <ul>
+      <li>Operated the control room switch box and the Stratos ground control GUI for the cold flow test, and supported operations during the hot fire.</li>
+      <li>During LOX loading, coordinated with the pad crew from the launch control center so the right valves and vents were opened in the right order, and kept notes for the test log.</li>
+    </ul>
+    <figure class="vid">
+      <video controls preload="none" playsinline poster="img/sf-coldflow-poster.jpg"><source src="media/stratos-cold-flow.mp4" type="video/mp4"></video>
+      <figcaption class="cap">The cold flow test at FAR. I ran the switch box and GUI for this test from the control room. Video, 2 minutes, with sound.</figcaption>
+    </figure>
+    <div class="figrow photos">
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-operator.jpg" alt="Me at the control room switch box and laptop running the ground control GUI" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">At the switch box and GUI in the control room.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-switchbox.jpg" alt="The toggle switch box for the vehicle's valves beside a radio and the ground control GUI on a laptop" width="1400" height="1050" loading="lazy"></button></div><figcaption class="cap">The valve switch box, radio and ground control GUI.</figcaption></figure>
+    </div>
+    <div class="sf-pair">
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-control-crew.jpg" alt="Me and two teammates seated at the control room console during the test" width="1050" height="1400" loading="lazy"></button></div><figcaption class="cap">In the control room with the crew.</figcaption></figure>
+      <figure class="fig"><div class="frame"><button class="zoom" type="button"><img src="img/sf-lox-loading.jpg" alt="Crew members at the base of the stand getting the pad ready for fuel loading" width="582" height="1170" loading="lazy"></button></div><figcaption class="cap">Getting the pad ready for fuel loading.</figcaption></figure>
+    </div>
+
+    <figure class="fig sf-hero">
+      <div class="frame"><button class="zoom" type="button"><img src="img/sf-hero.jpg" alt="Me standing in front of the Stratos vehicle on the vertical test stand at FAR" width="696" height="1400" loading="lazy"></button></div>
+      <figcaption class="cap">At FAR with the vehicle on the stand.</figcaption>
+    </figure>
+
+    <p class="note-later">Test results will be added here once the Stratos team has written them up.</p>
+
+    <div class="pager"><a href="#test-operations"><small>Previous</small>&larr; Valve testing and test operations</a><a href="#flight-simulator"><small>Next project</small>Rocket flight simulator &rarr;</a></div>
   </div></div>
 </article>
 
@@ -1306,7 +1409,7 @@ footer { border-top: 1px solid var(--line); }
       <li><strong>Two-link pendulum (Spring 2025).</strong> Newton-Euler model, checked against analytical results.</li>
       <li><strong>Quadcopter delivery optimization (Fall 2024).</strong> Cost and efficiency algorithm using payload mass, flight distance and weather, written up as a formal report.</li>
     </ul>
-    <div class="pager"><a href="#test-operations"><small>Previous</small>&larr; Valve testing and test operations</a><a href="#projects">All projects &rarr;</a></div>
+    <div class="pager"><a href="#stratos-static-fire"><small>Previous</small>&larr; Stratos static fire campaign</a><a href="#projects">All projects &rarr;</a></div>
   </div></div>
 </article>
 
@@ -1618,7 +1721,7 @@ footer { border-top: 1px solid var(--line); }
   /* ---------- views ---------- */
   var views = {};
   document.querySelectorAll('[data-view]').forEach(function (v) { views[v.getAttribute('data-view')] = v; });
-  var projectViews = ['nozzle-study', 'heat-flux', 'manifold', 'fluid-system', 'test-operations', 'flight-simulator', 'nozzle-report', 'manifold-report'];
+  var projectViews = ['nozzle-study', 'heat-flux', 'manifold', 'fluid-system', 'test-operations', 'stratos-static-fire', 'flight-simulator', 'nozzle-report', 'manifold-report'];
   function route() {
     var h = (location.hash || '').replace('#', '') || 'home';
     var anchor = null;
@@ -1933,7 +2036,8 @@ footer { border-top: 1px solid var(--line); }
     { h: 'manifold', t: 'COPV pressurant manifold', d: 'A six-port high-pressure manifold taken from interfaces through drawing, hand calculations and FEA.', tools: 'SolidWorks, Onshape, Ansys Mechanical', st: 'Design done, build next', r: 46, ph: 4.4, per: 175 },
     { h: 'fluid-system', t: 'Fluid system analysis and CAD', d: 'Fitting loss coefficients for the whole vehicle, plus the upper fluids redesign for a new airframe.', tools: 'Crane TP-410, Excel, Onshape', st: 'In progress', r: 20, ph: 3.54, per: 80 },
     { h: 'test-operations', t: 'Valve testing and test operations', d: 'Decay and hydrostatic testing of flight valves, and an igniter timing problem I caught before a static fire.', tools: 'Hydro and decay test, control GUI', st: 'Complete', r: 33, ph: 5.34, per: 125 },
-    { h: 'flight-simulator', t: 'Rocket flight simulator', d: 'A 1-D flight simulator in Python with a written technical report, and the motor model that follows it.', tools: 'Python, MATLAB', st: 'Complete', r: 46, ph: 1.26, per: 175 }
+    { h: 'flight-simulator', t: 'Rocket flight simulator', d: 'A 1-D flight simulator in Python with a written technical report, and the motor model that follows it.', tools: 'Python, MATLAB', st: 'Complete', r: 46, ph: 1.26, per: 175 },
+    { h: 'stratos-static-fire', t: 'Stratos static fire campaign', d: 'Test crew for the first static fire of an in-house liquid rocket engine at FAR in the Mojave Desert.', tools: 'Switch box and GUI, LabJack T7, thermocouples', st: 'Nov 2026', r: 46, ph: 3.3, per: 175 }
   ];
   var orbit = $('orbit'), nodes = orbit ? orbit.querySelectorAll('.node') : [], held = false, tMap = 0, mPrev = performance.now(), cur = -1;
   function brief(i) {
@@ -2023,7 +2127,7 @@ footer { border-top: 1px solid var(--line); }
   var bootSeen = false; try { bootSeen = sessionStorage.getItem('boot') === '1'; } catch (e) {}
   if (boot && !RM && !bootSeen && (!location.hash || location.hash === '#home')) {
     try { sessionStorage.setItem('boot', '1'); } catch (e) {}
-    var lines = ['PROPHETTE FLIGHT COMPUTER   BUILD 2026.11', '', '> power-on self test .............. OK', '> loading mission archive ......... 6 missions', '> propulsion ...................... LOX / RP-1, 2,000 lbf, 355 psia', '> pressurant ...................... GN2, COPV at 4,000 psi', '> position ........................ Long Beach, California', '> crew status ..................... available, Summer 2027', '', 'READY.'];
+    var lines = ['PROPHETTE FLIGHT COMPUTER   BUILD 2026.11', '', '> power-on self test .............. OK', '> loading mission archive ......... 7 missions', '> propulsion ...................... LOX / RP-1, 2,000 lbf, 355 psia', '> pressurant ...................... GN2, COPV at 4,000 psi', '> position ........................ Long Beach, California', '> crew status ..................... available, Summer 2027', '', 'READY.'];
     if (window.innerWidth < 640) lines = lines.map(function (l) { return l.replace(/ \.{3,} /, ': ').replace('   BUILD', ' / BUILD'); });
     var pre = boot.querySelector('pre'), go = boot.querySelector('.boot-go'), li = 0, PHB = (window.innerWidth < 700 || (window.matchMedia && window.matchMedia('(pointer: coarse)').matches && window.innerWidth < 1000)); boot.classList.add('on');
     if (PHB) lines = lines.filter(function (l, k) { return k === 0 || k === 1 || /loading|propulsion|crew/.test(l) || l === 'READY.'; });
